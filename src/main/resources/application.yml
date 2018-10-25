@@ -1,0 +1,29 @@
+server:
+  port: 8083
+
+spring:
+  datasource:
+    druid:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://127.0.0.1:5432/test
+      username: postgres
+      password: 123456
+
+  jpa:
+    #open-in-view: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      #use-new-id-generator-mappings: true
+    show-sql: true
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        temp:
+          use_jdbc_metadata_defaults: false
+
+    #数据库方式
+    job-store-type: jdbc
+    #初始化表结构
+    #jdbc:
+    #initialize-schema: never
