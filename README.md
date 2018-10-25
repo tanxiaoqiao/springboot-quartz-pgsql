@@ -1,4 +1,4 @@
-# springboot-qurzt-pgsql
+# springboot-quratz-pgsql
 springboot+qurzt+pgsql
 数据库：postgres
 ORM：JPA
