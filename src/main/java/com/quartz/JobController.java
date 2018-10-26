@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.UUID;
-
 @RestController
 @RequestMapping(value = "/job")
 public class JobController {
@@ -25,26 +23,26 @@ public class JobController {
 
 
     @PostMapping(value = "/addjob")
-    public void addjob(@RequestParam(value = "jobClassName") String jobClassName,
-                      // @RequestParam(value = "jobGroupName") String jobGroupName,
+    public void addjob(@RequestParam(value = "jobClassName") String jobClassName, @RequestParam(value = "jobGroupName") String jobGroupName,
                        @RequestParam(value = "cronExpression") String cronExpression) throws Exception {
-        addJob(jobClassName,  cronExpression);
+        addJob(jobClassName,  jobGroupName,cronExpression);
     }
 
-    public void addJob(String jobClassName,String cronExpression) throws Exception {
+    public void addJob(String jobClassName,String jobGroupName,String cronExpression) throws Exception {
 
         // 启动调度器
         scheduler.start();
 
         //构建job信息
         JobDetail jobDetail =
-                JobBuilder.newJob(getClass(jobClassName).getClass()).withIdentity(UUID.randomUUID().toString()).build();
+                JobBuilder.newJob(getClass(jobClassName).getClass()).withIdentity(jobClassName,jobGroupName
+                        ).build();
 
         //表达式调度构建器(即任务执行的时间)
         CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(cronExpression);
 
         //按新的cronExpression表达式构建一个新的trigger
-        CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(jobClassName)
+        CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(jobClassName,jobGroupName)
                 .withSchedule(scheduleBuilder).build();
 
         try {
