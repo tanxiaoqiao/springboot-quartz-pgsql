@@ -4,10 +4,30 @@ server:
 spring:
   datasource:
     druid:
-      driver-class-name: org.postgresql.Driver
-      url: jdbc:postgresql://127.0.0.1:5432/test
+      name: druid-database-fireiot
+      url: jdbc:postgresql://localhost:5432/test
       username: postgres
       password: 123456
+      driver-class-name: org.postgresql.Driver
+      filters: stat
+      # 初始连接
+      initialSize: 1
+      # 最大连接数
+      maxActive: 20
+      # 获取的最长等待时
+      maxWait: 60000
+      # 最小空闲连接数
+      minIdle: 1
+      # 每一分钟执行空闲连接回收
+      timeBetweenEvictionRunsMillis: 60000
+      # 每十分钟回收空闲连接
+      minEvictableIdleTimeMillis: 600000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
 
   jpa:
     #open-in-view: true
