@@ -47,3 +47,13 @@ spring:
     #初始化表结构
     #jdbc:
     #initialize-schema: never
+  quartz:
+    jdbc:
+      initialize-schema: never
+    job-store-type: jdbc
+    properties:
+      org.quartz.threadPool.threadCount: 5
+      org.quartz.jobStore.class: org.quartz.impl.jdbcjobstore.JobStoreTX
+      org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+      org.quartz.jobStore.dataSource: druid-database-fireiot
+

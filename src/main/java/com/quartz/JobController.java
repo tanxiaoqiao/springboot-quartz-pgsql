@@ -16,7 +16,6 @@ public class JobController {
 
     //加入Qulifier注解，通过名称注入bean
     @Autowired
-    @Qualifier("Scheduler")
     private Scheduler scheduler;
 
     private static Logger log = LoggerFactory.getLogger(JobController.class);
