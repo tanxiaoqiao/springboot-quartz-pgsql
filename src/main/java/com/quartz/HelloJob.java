@@ -1,15 +1,16 @@
 package com.quartz;
 
+import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
-@Component
-public class HelloJob implements BaseJob {
+@Service
+public class HelloJob implements Job {
 
     private static Logger _log = LoggerFactory.getLogger(HelloJob.class);
 

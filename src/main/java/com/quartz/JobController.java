@@ -16,6 +16,13 @@ public class JobController {
     private static Logger log = LoggerFactory.getLogger(JobController.class);
 
 
+    /**
+     * todo  jobClassName=com.quartz.xxxjob
+     * @param jobClassName
+     * @param jobGroupName
+     * @param cronExpression
+     * @throws Exception
+     */
     @GetMapping(value = "/addjob")
     public void addjob(@RequestParam(value = "jobClassName") String jobClassName, @RequestParam(value = "jobGroupName") String jobGroupName,
                        @RequestParam(value = "cronExpression") String cronExpression) throws Exception {
