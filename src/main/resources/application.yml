@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     druid:
-      name: druid-database-fireiot
+      name: druid-database
       url: jdbc:postgresql://localhost:5432/test
       username: postgres
       password: 123456
@@ -55,5 +55,5 @@ spring:
       org.quartz.threadPool.threadCount: 5
       org.quartz.jobStore.class: org.quartz.impl.jdbcjobstore.JobStoreTX
       org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
-      org.quartz.jobStore.dataSource: druid-database-fireiot
+      org.quartz.jobStore.dataSource: druid-database
 

@@ -4,9 +4,11 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+@Component
 public class NewJob implements BaseJob {
 
     private static Logger _log = LoggerFactory.getLogger(NewJob.class);

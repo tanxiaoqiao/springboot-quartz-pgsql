@@ -4,10 +4,7 @@ import org.quartz.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/job")
@@ -19,7 +16,7 @@ public class JobController {
     private static Logger log = LoggerFactory.getLogger(JobController.class);
 
 
-    @PostMapping(value = "/addjob")
+    @GetMapping(value = "/addjob")
     public void addjob(@RequestParam(value = "jobClassName") String jobClassName, @RequestParam(value = "jobGroupName") String jobGroupName,
                        @RequestParam(value = "cronExpression") String cronExpression) throws Exception {
         addJob(jobClassName,  jobGroupName,cronExpression);
